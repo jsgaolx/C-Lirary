@@ -1,0 +1,6 @@
+*.vcxproj
+*.filters
+*.sdf
+*.sln
+/Debug
+/MyLirary/Debug
