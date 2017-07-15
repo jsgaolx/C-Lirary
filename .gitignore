@@ -3,4 +3,4 @@
 *.sdf
 *.sln
 /Debug
-/MyLirary/Debug
+MyLirary/Debug
