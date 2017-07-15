@@ -2,6 +2,5 @@
 *.filters
 *.sdf
 *.sln
-*.vs
 /Debug
 MyLirary/Debug
