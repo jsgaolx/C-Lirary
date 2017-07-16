@@ -1,5 +1,7 @@
 #include "MySTLString.h"
 #include <assert.h>
+#include <iostream>
+#include <algorithm>
 
 MySTLString::~MySTLString()
 {
@@ -35,8 +37,22 @@ char * MySTLString::strcpy(char * des,const char * source)
 
 const char & MySTLString::front() const
 {
-	// TODO: 在此处插入 return 语句
 	return data_[0];
 }
+
+std::ostream & operator<<(std::ostream& os, const MySTLString& str)
+{
+	auto c = str.c_str();
+	while(*c)
+		os << *c++;
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, MySTLString& str)
+{
+	is >> str.data_;
+	return is;
+}
+
 
 
