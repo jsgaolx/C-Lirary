@@ -27,7 +27,19 @@ public:
 	//重载赋值运算符
 	MySTLString& operator = (const MySTLString& str);
 	MySTLString& operator = (const char* str);
+	const MySTLString& operator + (const MySTLString& str);
+	const MySTLString& operator += (const MySTLString& str);
+	char& operator [] (unsigned n);
+	bool operator == (const MySTLString& str);
+	bool operator > (const MySTLString& str);
+	bool operator >= (const MySTLString& str);
+	bool operator < (const MySTLString& str);
+	bool operator <= (const MySTLString& str);
 
+	bool empty();
+	unsigned size();
+
+	
 	//计算长度
 	unsigned strlen(const char* s);
 	//拷贝

@@ -17,5 +17,11 @@ int main()
 	std::cout << s3 << std::endl;
 	std::cout << s3_1 << std::endl;
 	std::cout << s4 << std::endl;
+	s4 += s3;
+	std::cout << s4 << std::endl;
+	s3 = s1 + s2;
+	std::cout << s3 << std::endl;
+	
+	
 	return 0;
 }
