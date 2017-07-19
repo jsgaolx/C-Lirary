@@ -28,13 +28,13 @@ public:
 	MySTLString& operator = (const MySTLString& str);
 	MySTLString& operator = (const char* str);
 	const MySTLString& operator + (const MySTLString& str);
-	const MySTLString& operator += (const MySTLString& str);
+	MySTLString& operator += (const MySTLString& str);
 	char& operator [] (unsigned n);
-	bool operator == (const MySTLString& str);
-	bool operator > (const MySTLString& str);
-	bool operator >= (const MySTLString& str);
-	bool operator < (const MySTLString& str);
-	bool operator <= (const MySTLString& str);
+	bool const operator == (const MySTLString& str);
+	bool const operator > (const MySTLString& str);
+	bool const operator >= (const MySTLString& str);
+	bool const operator < (const MySTLString& str);
+	bool const operator <= (const MySTLString& str);
 
 	bool empty();
 	unsigned size();

@@ -70,19 +70,23 @@ const MySTLString & MySTLString::operator+(const MySTLString& str)
 	return str1;
 }
 
-const MySTLString & MySTLString::operator+=(const MySTLString & str)
+MySTLString & MySTLString::operator+=(const MySTLString & str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
-	char* str1 = new char[strlen(data_) + strlen(str.data_) + 1];
-	while ((*str1 ++ = *data_++) != '\0');
-	str1--;
-	char* str2 = str.data_;
-	while ((*str2++ = *str2++) != '\0');
-	data_ = str2;
+	char* str1 = new char[strlen(data_) + strlen(str.data_) + 1]; 
+	
+	while (data_ != '\0' &&(*str1 = *data_) != '\0')
+	{
+		str1++;
+		data_++;
+	}
+	char* str3 = str.data_;
+	while ((*str1 ++ = *str3 ++) != '\0');
+	data_ = str1;
 	return *this;
 }
 
-bool MySTLString::operator==(const MySTLString& str)
+bool const MySTLString::operator==(const MySTLString& str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
 	char* str1 = str.data_;
@@ -94,7 +98,7 @@ bool MySTLString::operator==(const MySTLString& str)
 	return true;
 }
 
-bool MySTLString::operator>(const MySTLString & str)
+bool const MySTLString::operator>(const MySTLString & str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
 	char* str1 = str.data_;
@@ -105,13 +109,13 @@ bool MySTLString::operator>(const MySTLString & str)
 		else
 			return false;
 	}
-	if (*data_++ == '\0')
+	if (*data_ == '\0')
 		return false;
 	else
 		return true;
 }
 
-bool MySTLString::operator>=(const MySTLString & str)
+bool const MySTLString::operator>=(const MySTLString & str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
 	char* str1 = str.data_;
@@ -132,7 +136,7 @@ bool MySTLString::operator>=(const MySTLString & str)
 		return true;
 }
 
-bool MySTLString::operator<(const MySTLString & str)
+bool const MySTLString::operator<(const MySTLString & str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
 	char* str1 = str.data_;
@@ -143,13 +147,13 @@ bool MySTLString::operator<(const MySTLString & str)
 		else
 			return false;
 	}
-	if (*data_++ == '\0')
+	if (*data_ == '\0')
 		return true;
 	else
 		return false;
 }
 
-bool MySTLString::operator<=(const MySTLString & str)
+bool const MySTLString::operator<=(const MySTLString & str)
 {
 	assert(str.data_ != nullptr && data_ != nullptr);
 	char* str1 = str.data_;
