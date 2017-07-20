@@ -14,12 +14,13 @@ int main()
 	//s1 = s2_1;
 	std::cout << s2_1 << "#" << std::endl;
 	s3 = s1_1 + s3;
+	std::cout << s1_1 << "#" << std::endl;
 	std::cout << s3 << "#" << std::endl;
 	s4 += s3;
 	std::cout << s4 << "#" << std::endl;
 	
-	string a;
-	a + "sda";
-	std::cout << a << std::endl;
+	string a = "123123";
+	string b = a + "sda";
+	std::cout << b << std::endl;
 	return 0;
 }

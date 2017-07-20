@@ -11,6 +11,7 @@ class MySTLString
 	friend std::ostream &operator<<(std::ostream& os, const MySTLString& str);
 	//重载输入运算符
 	friend std::istream &operator>>(std::istream& is, MySTLString& str);
+	friend MySTLString operator + (const MySTLString& str1,const MySTLString& str2);
 	
 public:
 	~MySTLString();
@@ -27,8 +28,8 @@ public:
 	//重载赋值运算符
 	void operator = (const MySTLString& str);
 	void operator = (const char* str);
-	MySTLString& operator + (MySTLString& str);
-	const MySTLString& operator += (MySTLString& str);
+	//MySTLString& operator + (MySTLString& str);
+	const MySTLString& operator += (const MySTLString& str);
 	char& operator [] (unsigned n);
 	bool const operator == (const MySTLString& str);
 	bool const operator > (const MySTLString& str);
