@@ -25,10 +25,10 @@ public:
 	MySTLString(unsigned len, const char& a);
 
 	//ÖØÔØ¸³ÖµÔËËã·û
-	MySTLString& operator = (const MySTLString& str);
-	MySTLString& operator = (const char* str);
-	const MySTLString& operator + (const MySTLString& str);
-	MySTLString& operator += (const MySTLString& str);
+	void operator = (const MySTLString& str);
+	void operator = (const char* str);
+	MySTLString& operator + (MySTLString& str);
+	const MySTLString& operator += (MySTLString& str);
 	char& operator [] (unsigned n);
 	bool const operator == (const MySTLString& str);
 	bool const operator > (const MySTLString& str);
@@ -53,6 +53,7 @@ public:
 	
 private:
 	char* data_;
+	unsigned size_;
 };
 
 #endif
