@@ -7,62 +7,49 @@ MySTLString::~MySTLString()
 {
 }
 
-MySTLString::MySTLString()
+MySTLString::MySTLString():size_(0),data_(new char[1])
 {
-	size_   = 0;
-	data_  = new char[size_ + 1];
 	*data_ = '\0';
 }
 
-MySTLString::MySTLString(const MySTLString& str)
+MySTLString::MySTLString(const MySTLString& str):size_(str.size_), data_(new char[str.size_ + 1])
 {
-	size_  = str.size_;
-	data_ = new char[size_ + 1];
 	data_ = strcpy(data_, str.data_);
 }
 
-MySTLString::MySTLString(const char * s)
+MySTLString::MySTLString(const char * s):size_(strlen(s)),data_(new char[strlen(s) + 1])
 {
-	size_  = strlen(s);
-	data_ = new char[size_ + 1];
 	data_ = strcpy(data_, s); 
 }
 
-MySTLString::MySTLString(unsigned len, const char& a)
+MySTLString::MySTLString(unsigned len, const char& a):size_(len),data_(new char[len + 1])
 {
-	size_        = len ;
-	data_       = new char[size_ + 1];
 	data_[size_] = '\0';
 	while (len--)
 		data_[len] = a;
 }
 
-void MySTLString::operator=(const MySTLString& str)
+MySTLString& MySTLString::operator=(const MySTLString& str)
 {
-	if (&str == this)
-		return;
-	else
-	{
-		char* data = str.data_;
-		size_ = str.size_;
-		for (int i = 0; i <= size_; i++) 
-		{
-			data_[i] = data[i];
-		}
-	}
+	char* data = new char(*str.data_);
+	delete[]data_;
+	size_ = str.size_;
+	data_ = data;
+	return *this;
 }
 
-void MySTLString::operator=(const char * str)
+MySTLString& MySTLString::operator=(const char * str)
 {
 	assert(str != nullptr && data_ != nullptr);
 	if (data_ == str)
-		return ;
+		return *this;
 	else
 	{
 		size_ = strlen(str);
 		delete[]data_;
 		data_ = new char[size_ + 1];
 		data_ = strcpy(data_, str);
+		return *this;
 	}
 }
 
@@ -79,11 +66,11 @@ const MySTLString & MySTLString::operator+=(const MySTLString & str)
 	str1.size_ = size_ + str.size_;
 	delete[]str1.data_;
 	str1.data_ = (new char[str1.size_ + 1]);
-	for (int i = 0; i < size_; i++)
+	for (unsigned i = 0; i < size_; i++)
 	{
 		str1.data_[i] = data_[i];
 	}
-	for (int i = size_; i <= str1.size_; i++)
+	for (unsigned i = size_; i <= str1.size_; i++)
 	{
 		str1.data_[i] = str.data_[i - size_];
 	}

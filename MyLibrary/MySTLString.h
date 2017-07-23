@@ -18,7 +18,7 @@ public:
 	//默认构造函数
 	MySTLString();
 	//拷贝构造函数
-	//初始化方式 string s2 =s1
+	//初始化方式 string s2 (s1)
 	MySTLString(const MySTLString& str);
 	//初始化方式 string s3 ("a") 
 	MySTLString(const char* s);
@@ -26,8 +26,9 @@ public:
 	MySTLString(unsigned len, const char& a);
 
 	//重载赋值运算符
-	void operator = (const MySTLString& str);
-	void operator = (const char* str);
+	MySTLString& operator = (const MySTLString& str);
+
+	MySTLString& operator = (const char* str);
 	//MySTLString& operator + (MySTLString& str);
 	const MySTLString& operator += (const MySTLString& str);
 	char& operator [] (unsigned n);
